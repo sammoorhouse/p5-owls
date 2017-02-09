@@ -1,5 +1,4 @@
 var owlcount = 20
-var wiggleBounds = 0//0.5
 var owls = new Array(owlcount)
 var hearts = new Array()
 var bgColor
@@ -51,6 +50,14 @@ function draw() {
         }else{
             hearts.splice(currentHeart)
         }
+    }
+}
+
+function deviceShaken(){
+    for (var i = 0; i < owlcount; i++) {
+        var currentOwl = owls[i]
+        currentOwl.roll();
+        currentOwl.draw()
     }
 }
 

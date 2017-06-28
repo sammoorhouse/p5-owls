@@ -1,0 +1,14 @@
+[Unit]
+Description=WebServer for p5-owls app
+After=docker.service
+Requires=docker.service
+
+[Service]
+TimeoutStartSec=0
+ExecStartPre=-/usr/bin/docker kill p5-owls
+ExecStartPre=-/usr/bin/docker rm p5-owls
+ExecStartPre=/usr/bin/docker pull sammoorhouse/p5-owls
+ExecStart=/usr/bin/docker run -i --name p5-owls -p 80:80 sammoorhouse/p5-owls
+
+[Install]
+WantedBy=multi-user.target
